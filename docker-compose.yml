@@ -1,0 +1,76 @@
+services:
+  mysql_db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: '12345678!@#$ABcd'
+      MYSQL_DATABASE: 'expense_tracker'
+      MYSQL_TCP_PORT: 3306
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 9001:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: "2"      # Allocate 8 CPU
+          memory: "4G"   # Allocate 16GB of RAM
+        reservations:
+          cpus: "1"      # Reserve 1 CPU
+          memory: "1G"   # Reserve 1GB of RAM
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 10s
+      retries: 3
+      start_period: 30s
+      timeout: 5s
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql_db
+      PMA_PORT: 3306
+      MAX_EXECUTION_TIME: 300
+      MEMORY_LIMIT: 2G
+      UPLOAD_LIMIT: 2G
+    ports:
+      - 9002:80
+    deploy:
+      resources:
+        limits:
+          cpus: "1"      # Allocate 4 CPU
+          memory: "1G"   # Allocate 2GB of RAM
+        reservations:
+          cpus: "0.5"     # Reserve 0.25 CPU
+          memory: "256M"   # Reserve 128MB of RAM
+  expense-tracker-platform:
+      container_name: expense-tracker
+      build: .
+      volumes:
+          - .:/var/www/html
+      ports:
+          - 9000:80
+      depends_on:
+          mysql_db:
+              condition: service_healthy
+      environment:
+          DB_CONNECTION: mysql
+          DB_HOST: mysql_db
+          DB_PORT: 3306
+          DB_DATABASE: expense_tracker
+          DB_USERNAME: root
+          DB_PASSWORD: '12345678!@#$ABcd'
+      deploy:
+          resources:
+              limits:
+                  cpus: "4.0"
+                  memory: "8G"
+              reservations:
+                  cpus: "2"
+                  memory: "2G"
+volumes:
+  mysql_data:
