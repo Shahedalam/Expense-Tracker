@@ -76,3 +76,6 @@ docker exec expense-tracker bash -c "php artisan optimize:clear"
 
 # To update composer
 docker exec expense-tracker bash -c "composer update"
+
+# To run test
+docker exec expense-tracker bash -c "php artisan test"
