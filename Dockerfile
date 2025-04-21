@@ -32,5 +32,6 @@ RUN service apache2 restart
 
 RUN composer update
 
+RUN php artisan key:generate
 #CMD php artisan serve --host=0.0.0.0 --port=9000
 EXPOSE 80

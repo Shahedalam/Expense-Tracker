@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "6e678aa1-97a6-4a69-a15a-082da9761046",
+		"name": "Expense Tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11777077"
+	},
+	"item": [
+		{
+			"name": "budget",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/budget",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"budget"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/budget?month=2025-04-01&budget=10000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"budget"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "2025-04-01"
+								},
+								{
+									"key": "budget",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/budget/2?month=2025-04-01&budget=1000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"budget",
+								"2"
+							],
+							"query": [
+								{
+									"key": "month",
+									"value": "2025-04-01"
+								},
+								{
+									"key": "budget",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/budget/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"budget",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/budget/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"budget",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Expense",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expense",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expense"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expense?date=2025-04-01 21:35:25&category=Family Budget&description=Purchase milk&amount=500",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expense"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-04-01 21:35:25"
+								},
+								{
+									"key": "category",
+									"value": "Family Budget"
+								},
+								{
+									"key": "description",
+									"value": "Purchase milk"
+								},
+								{
+									"key": "amount",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expense/3?date=2025-04-01 21:35:25&category=Family Budget&description=Purchase milk&amount=500",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expense",
+								"3"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-04-01 21:35:25"
+								},
+								{
+									"key": "category",
+									"value": "Family Budget"
+								},
+								{
+									"key": "description",
+									"value": "Purchase milk"
+								},
+								{
+									"key": "amount",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expense/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expense",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expense/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expense",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"shahed2\",\r\n    \"email\": \"shahedoffice007@gmail.com\",\r\n    \"password\" : \"12345678\",\r\n    \"password_confirmation\" : \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Shahed",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "shahedalam07@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"disabled": true
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"shahed2\",\r\n    \"email\": \"shahedoffice007@gmail.com\",\r\n    \"password\" : \"12345678\",\r\n    \"password_confirmation\" : \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Shahed",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "shahedalam07@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"disabled": true
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "current-user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"shahed2\",\r\n    \"email\": \"shahedoffice007@gmail.com\",\r\n    \"password\" : \"12345678\",\r\n    \"password_confirmation\" : \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/current-user",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"current-user"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Shahed",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "shahedalam07@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"disabled": true
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "1|5m953z4am7KrIpJi2LyRC7LMuSt3jQWedi6Za77qd6ecd935",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:9000/api/v1",
+			"type": "string"
+		}
+	]
+}
